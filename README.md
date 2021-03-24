@@ -1,1 +1,1 @@
-FDVR
+FDVR = full dive virtual reality

@@ -1,0 +1,14 @@
+RewriteEngine on
+
+# Prevent people from looking directly into folders
+# Disables the listing of a the directory
+Options -Indexes
+
+#	^	begins the line to match.
+#	$	ends the line to match.
+#	.	Matches any single character
+#	+	Repeats the previous match one or more times
+#	*	Repeats the previous match zero or more times
+#	?	Makes the match optional						colou?r will match color and colour
+#	\	Escape the next character
+#	( )	Groups several characters into a single unit, and captures a match for use in a backreference
