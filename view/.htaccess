@@ -4,6 +4,15 @@ RewriteEngine on
 # Disables the listing of a the directory
 Options -Indexes
 
+# request is not for a directory
+RewriteCond %{REQUEST_FILENAME} !-d
+
+# request is not for a file
+RewriteCond %{REQUEST_FILENAME} !-f
+
+
+RewriteRule ^(.+)$ index.php?url=$1 [QSA,L]
+
 #	^	begins the line to match.
 #	$	ends the line to match.
 #	.	Matches any single character

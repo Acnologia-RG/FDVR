@@ -1,1 +1,7 @@
-<h2>welcome to the FDVR home page</h2>
+<?php
+
+define("ROOT", dirname(__DIR__) . DIRECTORY_SEPARATOR);
+
+require(ROOT . "route/route.php");
+
+route();
