@@ -10,9 +10,9 @@ function render($filename, $data = null)
 		}
 	} 
 
-	require(ROOT . 'view/templates/header.php');
+	require(ROOT . 'templates/header.php');
 	require(ROOT . 'view/' . $filename . '.php');
-	require(ROOT . 'view/templates/footer.php');
+	require(ROOT . 'templates/footer.php');
 }
 
 function index()

@@ -17,3 +17,21 @@ function openDataBaseConnection()
 
 	return $db;
 }
+
+
+function register()
+{
+	$db = openDatabaseConnection();
+	$sql = "INSERT INTO `users`(`name`, `password`, `email`) VALUES (:name, sha1(:password), :email)";
+
+	$query = $db->prepare($sql);
+	$query->execute(array(
+		":name" => $name,
+		":password" => $password,
+		":email" => $email
+	));
+
+	$db = null;
+
+	return $query->fetchAll();
+}
