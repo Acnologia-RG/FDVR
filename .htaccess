@@ -1,5 +1,5 @@
 RewriteEngine on
-RewriteRule ^(.*) route/$1 [L]
+RewriteRule ^(.*) public/$1 [L]
 
 #	^	begins the line to match.
 #	$	ends the line to match.
