@@ -23,8 +23,27 @@ function openDataBaseConnection()
 	return $db;
 }
 
-function register()
+function registerModel($name, $password, $confirm_password)
 {
+	// checks if all inputs are filled in
+	if ($name === null || $password === null || $confirm_password === null) {
+		$Err = "make sure all input fields are filled in";
+		input($Err);
+		exit();
+	}
+	//checks if $name matches with what i want (a to z, A to Z, 0 to 9, _-=+$#! but not spaces and a max length of 16)
+	if (!preg_match("/^[\w\-=+$#!]{1,16}$/", $name)) {
+		$Err = "Only letters, numbers and _-=+$#! are allowed in your name";
+		input($Err);
+		exit();
+	}
+	// checks if given password matches the confirm_password
+	if (!$password === $confirm_password) {
+		$Err = "your 'password' does not match the 'confirm password' please make sure and try again";
+		input($Err);
+		exit();
+	}
+
 	$db = openDatabaseConnection();
 	$sql = "INSERT INTO `users`(`name`, `password`) VALUES (:name, sha1(:password))";
 
@@ -35,12 +54,17 @@ function register()
 	));
 
 	$db = null;
-
-	return $query->fetchAll();
+	loginModel($name, $password);
 }
 
-function login()
+function loginModel($name, $password)
 {
+	if ($name === null || $password === null) {
+		$Err = "make sure all input fields are filled in";
+		input($Err);
+		exit();
+	}
+
 	$db = openDatabaseConnection();
 	$sql = "SELECT * FROM `users` WHERE `name` = :name AND `password` = sha1(:password)";
 

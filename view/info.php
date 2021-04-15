@@ -88,7 +88,7 @@ Neurable is working on an SDK for Unity, so developers can build their own mind-
 <br><br>
 Full dive virtual reality development isn’t all fun and games. Success requires a solid foundation in the very latest virtual reality technology, and the ability to transform complex theories into workable solutions. Pioneers in full dive development must go beyond adopting the latest technology; they must be able to do real science.</p>
 
-<a href="https://www.linkedin.com/pulse/full-dive-virtual-reality-coming-soon-brain-near-you-aviram-eisenberg">source</a>
+<a target="_blank" href="https://www.linkedin.com/pulse/full-dive-virtual-reality-coming-soon-brain-near-you-aviram-eisenberg">source</a>
 </section>
 
 <section>
@@ -201,6 +201,6 @@ Even when technology does catch up, which may very well be in the next 30 to a 1
 <br><br>
 Whenever that finally happens though, a revolution will be upon us. One enticing enough for the world to fully dive in to.</p>
 
-<a href="https://3drific.com/is-full-dive-vr-achievable-in-the-next-10-years/">source</a>
+<a target="_blank" href="https://3drific.com/is-full-dive-vr-achievable-in-the-next-10-years/">source</a>
 <br><br>
 </section>

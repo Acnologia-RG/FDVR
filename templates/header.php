@@ -1,9 +1,12 @@
+<?php 
+session_start()
+?>
 <!DOCTYPE html>
 <html>
 	<head>
 		<title>FDVR</title>	
 		<link rel="stylesheet" href="<?= URL ?>css/style.css">
-		<meta charset="utf-8">
+		<meta charset="utf-16">
 	</head>
 	<body>
 	<nav>
