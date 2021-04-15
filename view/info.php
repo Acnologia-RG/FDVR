@@ -204,3 +204,16 @@ Whenever that finally happens though, a revolution will be upon us. One enticing
 <a target="_blank" href="https://3drific.com/is-full-dive-vr-achievable-in-the-next-10-years/">source</a>
 <br><br>
 </section>
+
+<!--  to make it dynamic i could put the sections into my database  
+foreach ($info_paragraphs as $paragraph)
+{
+	
+	<section>
+
+	echo $paragraph; 
+
+	</section>
+	
+}
+-->

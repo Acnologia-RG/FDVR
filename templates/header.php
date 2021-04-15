@@ -16,3 +16,17 @@ session_start()
 		<li><a href="<?= URL ?>fdvr/registerAndLogin">register/Login</a></li>
 		</ul>
 	</nav>
+
+<!-- to make it dynamic i could put the pages into my database and only have 2 standard pages like home and login/register
+	<nav>
+	<ul>
+	 foreach ($pages as $page) {
+	
+
+	<li><a href=" URL echo $page["name"]; "
+	
+	
+}
+</ul>
+</nav>
+-->
