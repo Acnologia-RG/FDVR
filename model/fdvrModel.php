@@ -2,7 +2,7 @@
 // DataBase settings
 define('DB_TYPE', 'mysql');			// What kind of DataBase type
 define('DB_HOST', '127.0.0.1'); 	// What is the IP address (127.0.0.1 is my own PC)
-define('DB_NAME', 'to-do_list'); 	// What is the DataBase name
+define('DB_NAME', 'fdvr'); 			// What is the DataBase name
 define('DB_USER', 'root'); 			// What is the DataBase user name
 define('DB_PASS', 'school');		// What is the DataBase password
 define('DB_CHARSET', 'utf8'); 		// which characterset is being used
@@ -26,14 +26,14 @@ function openDataBaseConnection()
 function registerModel($name, $password, $confirm_password)
 {
 	// checks if all inputs are filled in
-	if ($name === null || $password === null || $confirm_password === null) {
+	if ($name === null || $password === null || $confirm_password === null || empty($name) || empty($password) || empty($confirm_password)) {
 		$Err = "make sure all input fields are filled in";
 		input($Err);
 		exit();
 	}
 	//checks if $name matches with what i want (a to z, A to Z, 0 to 9, _-=+$#! but not spaces and a max length of 16)
 	if (!preg_match("/^[\w\-=+$#!]{1,16}$/", $name)) {
-		$Err = "Only letters, numbers and _-=+$#! are allowed in your name";
+		$Err = "Only letters, numbers and _-=+$#! are allowed in your name no spaces";
 		input($Err);
 		exit();
 	}
@@ -45,6 +45,21 @@ function registerModel($name, $password, $confirm_password)
 	}
 
 	$db = openDatabaseConnection();
+
+	$sql = "SELECT * FROM `users` where `name` =:name LIMIT 1";
+
+	$query = $db->prepare($sql);
+	$query->execute(array(
+		":name" => $name
+	));
+
+	$result = $query->fetch();
+	if ($result["name"] == $name) {
+		$Err = "name already exists in the database";
+		input($Err);
+		exit();
+	}
+
 	$sql = "INSERT INTO `users`(`name`, `password`) VALUES (:name, sha1(:password))";
 
 	$query = $db->prepare($sql);
@@ -54,19 +69,19 @@ function registerModel($name, $password, $confirm_password)
 	));
 
 	$db = null;
-	loginModel($name, $password);
+	return TRUE;
 }
 
 function loginModel($name, $password)
 {
-	if ($name === null || $password === null) {
+	if ($name === null || $password === null || empty($name) || empty($password)) {
 		$Err = "make sure all input fields are filled in";
 		input($Err);
 		exit();
 	}
 
 	$db = openDatabaseConnection();
-	$sql = "SELECT * FROM `users` WHERE `name` = :name AND `password` = sha1(:password)";
+	$sql = "SELECT * FROM `users` WHERE `name` = :name AND `password` = sha1(:password) LIMIT 1";
 
 	$query = $db->prepare($sql);
 	$query->execute(array(
@@ -76,5 +91,8 @@ function loginModel($name, $password)
 
 	$db = null;
 
-	return $query->fetchAll();
+	// var_dump($query->fetch());
+	// exit();
+
+	return $query->fetch();
 }

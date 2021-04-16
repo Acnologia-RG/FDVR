@@ -2,15 +2,24 @@
 
 function error_404()
 {
-	echo "404 - the requested route is not available.";
+	$Err = "404 - the requested route is not available.";
+	render("error", array(
+		"Err" => $Err)
+	);
 }
 
 function error_db()
 {
-	echo "error_db - the database ran into an error";
+	$Err = "error_db - the database ran into an error";
+	render("error", array(
+		"Err" => $Err)
+	);
 }
 
-function input()
+function input($Err)
 {
-	echo $Err;
+	render("error", array(
+		"Err" => $Err)
+	);
 }
+
