@@ -67,7 +67,7 @@ function registerModel($name, $password, $confirm_password)
 		":password" => $password
 	));
 	$db = null;
-	
+
 	return TRUE;
 	exit();
 }
@@ -91,10 +91,16 @@ function loginModel($name, $password)
 	));
 	$db = null;
 
-	// checks if the user in the DB has the same password as the one given 
 	$result = $query->fetch();
-	if ($result["password"] == sha1($password)) {
-		return $query->fetch();
+	// checks if there was anyone in the database with the given username 
+	if ($result == null || FALSE) {
+		$Err = "no user with that username found. make sure you typed it right";
+		input($Err);
+		exit();
+	
+	// checks if the user in the DB has the same password as the one given 
+	} elseif ($result["password"] == sha1($password)) {
+		return $result;
 		exit();
 	} else {
 		$Err = "the password you put in did not match with the password for this user. make sure you put in the right password and try again";
