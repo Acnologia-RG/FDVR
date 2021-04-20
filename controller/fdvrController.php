@@ -1,12 +1,12 @@
-<?php 
+<?php
+// makes the fdvrModel.php and errorController.php available from the controller
 require(ROOT . "model/fdvrModel.php");
 require(ROOT . "controller/errorController.php");
 
-
+// puts together a page by putting the requested page between the header and footer, and sends the date variables with it if there are any
 function render($filename, $data = null)
 {
 	if ($data) {
-
 		foreach($data as $key => $value) {
 			$$key = $value;
 		}
@@ -16,20 +16,20 @@ function render($filename, $data = null)
 	require(ROOT . 'view/' . $filename . '.php');
 	require(ROOT . 'templates/footer.php');
 }
-
+// shows the user the home page
 function index()
 {
 	render("home");
 }
-
+// shows the user the info page
 function info() {
 	render("info");
 }
-
+// shows the user the registerAndLogin page
 function registerAndLogin() {
 	render("registerAndLogin");
 }
-
+// logs in the user and sets their name and power in the session
 function login()
 {
 	$name = isset($_POST["name"]) ? $_POST["name"] : null;
@@ -47,7 +47,7 @@ function login()
 		exit();	
 	}
 }
-
+// registers the user and then logs them in
 function register()
 {
 	$name = isset($_POST["name"]) ? $_POST["name"] : null;
@@ -61,7 +61,7 @@ function register()
 		exit();	
 	}
 }
-
+// empties out all the session data and then ends the session as a whole
 function logout()
 {
 	session_start();

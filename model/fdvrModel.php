@@ -45,21 +45,20 @@ function registerModel($name, $password, $confirm_password)
 	}
 
 	$db = openDatabaseConnection();
-
 	$sql = "SELECT * FROM `users` where `name` =:name LIMIT 1";
 
 	$query = $db->prepare($sql);
 	$query->execute(array(
 		":name" => $name
 	));
-
+	// checks if there is already a user with the same username
 	$result = $query->fetch();
 	if ($result["name"] == $name) {
 		$Err = "name already exists in the database";
 		input($Err);
 		exit();
 	}
-
+	// puts your username and password into the database
 	$sql = "INSERT INTO `users`(`name`, `password`) VALUES (:name, sha1(:password))";
 
 	$query = $db->prepare($sql);
@@ -67,32 +66,42 @@ function registerModel($name, $password, $confirm_password)
 		":name" => $name,
 		":password" => $password
 	));
-
 	$db = null;
+	
 	return TRUE;
+	exit();
 }
 
 function loginModel($name, $password)
 {
+	// checks if all inputs are filled in
 	if ($name === null || $password === null || empty($name) || empty($password)) {
 		$Err = "make sure all input fields are filled in";
 		input($Err);
 		exit();
 	}
 
+	// grabs the data from the user of the given username
 	$db = openDatabaseConnection();
-	$sql = "SELECT * FROM `users` WHERE `name` = :name AND `password` = sha1(:password) LIMIT 1";
+	$sql = "SELECT * FROM `users` WHERE `name` = :name LIMIT 1";
 
 	$query = $db->prepare($sql);
 	$query->execute(array(
-		":name" => $name,
-		":password" => $password
+		":name" => $name
 	));
-
 	$db = null;
 
-	// var_dump($query->fetch());
-	// exit();
+	// checks if the user in the DB has the same password as the one given 
+	$result = $query->fetch();
+	if ($result["password"] == sha1($password)) {
+		return $query->fetch();
+		exit();
+	} else {
+		$Err = "the password you put in did not match with the password for this user. make sure you put in the right password and try again";
+		input($Err);
+		exit();
+	}
 
-	return $query->fetch();
+	return FALSE;
+	exit();
 }
