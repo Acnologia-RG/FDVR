@@ -3,6 +3,6 @@
 
 <?php 
 if (!$_SESSION == null) {
-echo "welcome " . $_SESSION["name"];
+echo "<p>welcome " . $_SESSION["name"] . "</p>";
 }
 ?>

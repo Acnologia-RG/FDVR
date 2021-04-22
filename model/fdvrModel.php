@@ -81,7 +81,7 @@ function loginModel($name, $password)
 		exit();
 	}
 
-	// grabs the data from the user of the given username
+	// grabs the data from the user of the given username if there is one
 	$db = openDatabaseConnection();
 	$sql = "SELECT * FROM `users` WHERE `name` = :name LIMIT 1";
 

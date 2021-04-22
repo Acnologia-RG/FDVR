@@ -58,7 +58,7 @@ function register()
 		login();
 	} else {
 		error_db();
-		exit();	
+		exit();
 	}
 }
 // empties out all the session data and then ends the session as a whole
