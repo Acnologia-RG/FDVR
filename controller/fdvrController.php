@@ -70,3 +70,8 @@ function logout()
 	header("location:" . URL . "fdvr/index");
 	exit;
 }
+// shows the create page
+function createPage()
+{
+	render("create");
+}

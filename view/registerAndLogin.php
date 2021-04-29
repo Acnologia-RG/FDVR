@@ -6,7 +6,7 @@
 		<label for="password">password</label>
 		<input class="text" type="password" min="2" maxlength="40" size="42" required name="password"><br>
 		<input class="btn btn-secondary" type="submit" value="Login">
-</form>
+	</form>
 </section>
 <br><br>
 
@@ -20,7 +20,7 @@
 		<label for="password">confirm password</label>
 		<input class="text" type="password" min="2" maxlength="40" size="42" required name="confirm_password"><br>
 		<input class="btn btn-secondary" type="submit" value="Register">
-</form>
+	</form>
 </section>
 
 <?php 

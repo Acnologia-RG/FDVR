@@ -28,3 +28,6 @@ li a:hover {
 .active {
 	background-color: #4e4caf;
 }
+nav>ul>li:last-child {
+    float: right 
+}
