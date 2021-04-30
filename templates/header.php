@@ -19,10 +19,11 @@ session_start()
 			<li><a href="<?= URL ?>fdvr/registerAndLogin">register/Login</a></li>
 			<?php } ?>
 
-			<?php if(!$_SESSION == NULL){ if ($_SESSION["power"] === '1') { ?>
-			<li><a href="<?= URL ?>fdvr/createPage">create</a></li>
+			<?php if(!$_SESSION == NULL){ 
+				if ($_SESSION["power"] === '1') { ?>
+				<li><a href="<?= URL ?>admin/createPage">create</a></li>
 
-			<?php } ?>
+				<?php } ?>
 
 			<li><a href="<?= URL ?>fdvr/logout">logout</a></li>
 			<?php } ?>

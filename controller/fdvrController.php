@@ -1,21 +1,8 @@
 <?php
-// makes the fdvrModel.php and errorController.php available from the controller
+// makes the fdvrModel.php and errorController.php available from this controller
 require(ROOT . "model/fdvrModel.php");
 require(ROOT . "controller/errorController.php");
 
-// puts together a page by putting the requested page between the header and footer, and sends the date variables with it if there are any
-function render($filename, $data = null)
-{
-	if ($data) {
-		foreach($data as $key => $value) {
-			$$key = $value;
-		}
-	} 
-
-	require(ROOT . 'templates/header.php');
-	require(ROOT . 'view/' . $filename . '.php');
-	require(ROOT . 'templates/footer.php');
-}
 // shows the user the home page
 function index()
 {

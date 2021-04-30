@@ -16,7 +16,7 @@ function error_db()
 	);
 }
 // all input error's come here (example: miss matched username or passwords)
-function input($Err)
+function error($Err)
 {
 	render("error", array(
 		"Err" => $Err)
