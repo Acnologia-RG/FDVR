@@ -1,4 +1,5 @@
 <?php
+// makes the coreModel.php available from this model
 require(ROOT . "model/coreModel.php");
 
 function registerModel($name, $password, $confirm_password)

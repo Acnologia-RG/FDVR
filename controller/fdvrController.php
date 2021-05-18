@@ -1,7 +1,6 @@
 <?php
-// makes the fdvrModel.php and errorController.php available from this controller
+// makes the fdvrModel.php available from this controller
 require(ROOT . "model/fdvrModel.php");
-require(ROOT . "controller/errorController.php");
 
 // shows the user the home page
 function index()
@@ -9,11 +8,13 @@ function index()
 	render("home");
 }
 // shows the user the info page
-function info() {
+function info() 
+{
 	render("info");
 }
 // shows the user the registerAndLogin page
-function registerAndLogin() {
+function registerAndLogin() 
+{
 	render("registerAndLogin");
 }
 // logs in the user and sets their name and power in the session
@@ -56,9 +57,4 @@ function logout()
 	session_destroy();
 	header("location:" . URL . "fdvr/index");
 	exit;
-}
-// shows the create page
-function createPage()
-{
-	render("create");
 }

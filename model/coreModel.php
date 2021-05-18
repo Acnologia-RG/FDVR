@@ -1,4 +1,7 @@
 <?php
+// makes the fdvrModel.php available from this model
+require(ROOT . "controller/errorController.php");
+
 // DataBase settings
 define('DB_TYPE', 'mysql');			// What kind of DataBase type
 define('DB_HOST', '127.0.0.1'); 	// What is the IP address (127.0.0.1 is my own PC)

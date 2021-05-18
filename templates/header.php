@@ -21,7 +21,7 @@ session_start()
 
 			<?php if(!$_SESSION == NULL){ 
 				if ($_SESSION["power"] === '1') { ?>
-				<li><a href="<?= URL ?>admin/createPage">create</a></li>
+				<li><a href="<?= URL ?>admin/showCreatePage">create</a></li>
 
 				<?php } ?>
 
