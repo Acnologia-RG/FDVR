@@ -10,6 +10,7 @@ ul {
 	padding: 0;
 	overflow: hidden;
 	background-color: #333;
+	border-radius: 0 0 15px 15px;
 }
 li {
 	float: left;
@@ -21,12 +22,10 @@ li a {
 	padding: 14px 16px;
 	text-decoration: none;
 }
-/* Change the link color to #111 (black) on hover */
 li a:hover {
 	background-color: #111;
-}
-.active {
-	background-color: #4e4caf;
+	text-decoration: none;
+	color: #6967ff;
 }
 nav>ul>li:last-child {
     float: right 

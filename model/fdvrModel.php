@@ -89,3 +89,7 @@ function loginModel($name, $password)
 	return FALSE;
 	exit();
 }
+function getContent($name)
+{
+	
+}

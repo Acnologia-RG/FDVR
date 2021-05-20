@@ -17,9 +17,7 @@ session_start()
 			
 			<?php if ($_SESSION == null) { ?>
 			<li><a href="<?= URL ?>fdvr/registerAndLogin">register/Login</a></li>
-			<?php } ?>
-
-			<?php if(!$_SESSION == NULL){ 
+			<?php } else if (!$_SESSION == NULL){ 
 				if ($_SESSION["power"] === '1') { ?>
 				<li><a href="<?= URL ?>admin/showCreatePage">create</a></li>
 
@@ -36,9 +34,7 @@ session_start()
 	<ul>
 	 foreach ($pages as $page) {
 	
-
 	<li><a href=" URL echo $page["name"]; "
-	
 	
 }
 </ul>

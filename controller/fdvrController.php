@@ -58,3 +58,10 @@ function logout()
 	header("location:" . URL . "fdvr/index");
 	exit;
 }
+function content($name)
+{
+	$content = getContent($name);
+	render("content", array(
+		'content' => $content)
+	);
+}
