@@ -26,18 +26,19 @@
 	<h3>create paragraph</h3>
 	<form action="<?= URL ?>admin/createParagraphControl" method='POST'>
 	<label for="page_id">belongs to what page?</label>
+	<select required name="page_id">
 	<?php foreach ($pages as $page) { ?>
-	<option value="<?= $page["page_id"] ?>"><?= $page["page_name"] ?></option>
-	<?php } ?>
+	<option value="<?= $page["ID"] ?>"><?= $page["name"] ?></option>
+	<?php } ?></select><br>
 
 	<label for="title">title</label>
-	<input class="text" type="text" min="2" maxlength="30" size="18" required name="title">
+	<input class="text" type="text" min="2" maxlength="30" size="18" required name="title"><br>
 	
 	<label for="context">context</label>
-	<textarea min="2" maxlength="30" size="18" required name="context">
+	<textarea min="2" maxlength="30" size="18" required name="context"></textarea><br>
 	
 	<label for="order_index">order_index</label>
-	<input class="text" type="number" min="1" required name="order_index">
+	<input class="text" type="number" min="1" required name="order_index"><br>
 
 	<label for="visible">visible to users?</label><br>
 	<input type="radio" name="visible" required value="1">

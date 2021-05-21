@@ -1,30 +1,14 @@
 <?php
-// makes the coreModel.php available from this model
-require(ROOT . "model/coreModel.php");
-
-function getPages()
-{
-	// gets all the page data from the database
-	$db = openDatabaseConnection();
-	$sql = "SELECT * FROM `pages`";
-
-	$query = $db->prepare($sql);
-	$query->execute();
-	$pages = $query->fetch();
-	
-	return $pages;
-	exit();
-}
-function getParagraphs($page_id)
+function getParagraph($id)
 {
 	// gets all the paragraph data from the database
 	$db = openDatabaseConnection();
-	$sql = "SELECT * FROM `paragraphs` WHERE `page_id` = :page_id";
+	$sql = "SELECT * FROM `paragraphs` WHERE `ID` = :id";
 
 	$query = $db->prepare($sql);
 	$query->execute();
 	$pages = $query->fetch(array(
-		":page_id" => $page_id
+		":id" => $id
 	));
 	
 	return $paragraphs;

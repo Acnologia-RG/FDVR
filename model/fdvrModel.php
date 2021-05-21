@@ -89,7 +89,21 @@ function loginModel($name, $password)
 	return FALSE;
 	exit();
 }
-function getContent($name)
+function getContent($id)
 {
-	
+	$db = openDatabaseConnection();
+	$sql = "SELECT * FROM `pages` 
+	left JOIN `paragraphs` ON `pages`.`ID` = `paragraphs`.`page_id` 
+	WHERE `pages`.`ID` = :id";
+
+	$query = $db->prepare($sql);
+	$query->execute(array(
+		":id" => $id
+	));
+	$db = null;
+
+	$result = $query->fetchAll();
+
+	return $result;
+	exit();
 }

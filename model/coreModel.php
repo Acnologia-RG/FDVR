@@ -37,3 +37,16 @@ function render($filename, $data = null)
 	require(ROOT . 'view/' . $filename . '.php');
 	require(ROOT . 'templates/footer.php');
 }
+function getPages()
+{
+	// gets all the page data from the database
+	$db = openDatabaseConnection();
+	$sql = "SELECT * FROM `pages`";
+
+	$query = $db->prepare($sql);
+	$query->execute();
+	$pages = $query->fetchAll();
+	
+	return $pages;
+	exit();
+}

@@ -5,17 +5,16 @@ require(ROOT . "model/fdvrModel.php");
 // shows the user the home page
 function index()
 {
-	render("home");
-}
-// shows the user the info page
-function info() 
-{
-	render("info");
+	$pages = getPages();
+	render("home", array(
+		'pages' => $pages));
 }
 // shows the user the registerAndLogin page
 function registerAndLogin() 
 {
-	render("registerAndLogin");
+	$pages = getPages();
+	render("registerAndLogin", array(
+		'pages' => $pages));
 }
 // logs in the user and sets their name and power in the session
 function login()
@@ -58,10 +57,11 @@ function logout()
 	header("location:" . URL . "fdvr/index");
 	exit;
 }
-function content($name)
+function content($id)
 {
-	$content = getContent($name);
+	$pages = getPages();
+	$content = getContent($id);
 	render("content", array(
-		'content' => $content)
-	);
+		'content' => $content,
+		'pages' => $pages));
 }

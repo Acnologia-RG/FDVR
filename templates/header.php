@@ -1,5 +1,5 @@
 <?php 
-session_start()
+session_start();
 ?>
 <!DOCTYPE html>
 <html>
@@ -13,9 +13,10 @@ session_start()
 	<nav>
 		<ul>
 			<li><a href="<?= URL ?>fdvr/index">home</a></li>
-			<li><a href="<?= URL ?>fdvr/info">info</a></li>
-			
-			<?php if ($_SESSION == null) { ?>
+			<?php foreach ($pages as $page) { ?>
+				<li><a href="<?= URL . "fdvr/content/" . $page["ID"]; ?>"><?= $page["name"] ?></a></li>
+
+			<?php } if ($_SESSION == null) { ?>
 			<li><a href="<?= URL ?>fdvr/registerAndLogin">register/Login</a></li>
 			<?php } else if (!$_SESSION == NULL){ 
 				if ($_SESSION["power"] === '1') { ?>
@@ -28,15 +29,3 @@ session_start()
 		</ul>
 	</nav>
 	<br><br>
-
-<!-- to make it dynamic i could put the pages with title and ID into my database and only have 2 standard pages like home and login/register
-	<nav>
-	<ul>
-	 foreach ($pages as $page) {
-	
-	<li><a href=" URL echo $page["name"]; "
-	
-}
-</ul>
-</nav>
--->

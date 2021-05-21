@@ -19,7 +19,7 @@ function createPageControl()
 	var_dump($name,	$admin,	$visible);
 
 	// go to the just made page
-	// content($name)
+	// content($id)
 }
 function createParagraphControl()
 {
