@@ -28,4 +28,3 @@ session_start();
 			<?php } ?>
 		</ul>
 	</nav>
-	<br><br>

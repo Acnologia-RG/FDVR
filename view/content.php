@@ -1,8 +1,11 @@
+<section>
 <?php
-if ($content[0]["visible"]) {
-	# code...
-}
+//var_dump($content[0]);
 foreach ($content as $paragraph){
-
+	if ($paragraph["paragraph_visible"]) {
+		echo "<h2>".$paragraph["title"]."</h2>";
+		echo "<p>".$paragraph["content"]."</p><br>";
+	}
 }
-var_dump($content[0]);
+?>
+</section>

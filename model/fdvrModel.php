@@ -24,7 +24,8 @@ function registerModel($name, $password, $confirm_password)
 	}
 
 	$db = openDatabaseConnection();
-	$sql = "SELECT * FROM `users` where `name` =:name LIMIT 1";
+	$sql = "SELECT * FROM `users`
+	WHERE `name` =:name LIMIT 1";
 
 	$query = $db->prepare($sql);
 	$query->execute(array(
@@ -38,7 +39,8 @@ function registerModel($name, $password, $confirm_password)
 		exit();
 	}
 	// puts your username and password into the database
-	$sql = "INSERT INTO `users`(`name`, `password`) VALUES (:name, sha1(:password))";
+	$sql = "INSERT INTO `users`(`name`, `password`)
+	VALUES (:name, sha1(:password))";
 
 	$query = $db->prepare($sql);
 	$query->execute(array(
@@ -61,7 +63,8 @@ function loginModel($name, $password)
 
 	// grabs the data from the user of the given username if there is one
 	$db = openDatabaseConnection();
-	$sql = "SELECT * FROM `users` WHERE `name` = :name LIMIT 1";
+	$sql = "SELECT * FROM `users`
+	WHERE `name` = :name LIMIT 1";
 
 	$query = $db->prepare($sql);
 	$query->execute(array(
@@ -94,7 +97,8 @@ function getContent($id)
 	$db = openDatabaseConnection();
 	$sql = "SELECT * FROM `pages` 
 	left JOIN `paragraphs` ON `pages`.`ID` = `paragraphs`.`page_id` 
-	WHERE `pages`.`ID` = :id";
+	WHERE `pages`.`ID` = :id 
+	ORDER BY `paragraphs`.`order_index`";
 
 	$query = $db->prepare($sql);
 	$query->execute(array(

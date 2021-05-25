@@ -1,52 +1,103 @@
 <section>
-	<h3>create page</h3>
+	<h2>create page</h2>
 	<form action="<?= URL ?>admin/createPageControl" method='POST'>
-	<label for="name">name</label>
-	<input class="text" type="text" min="2" maxlength="30" size="18" required name="name">
-	<br><br>
+	<div class="row">
+		<div class="col-20">
+			<label for="name">name</label>
+		</div>
+		<div class="col-80">
+			<input class="text" type="text" min="2" maxlength="30" required name="name"
+			placeholder="of the page you want to make">
+		</div>
+	</div>
 
-	<label for="admin">admin page?</label><br>
-	<input type="radio" name="admin" required value="1">
-	<label for="1">Yes</label><br>
-	<input type="radio" name="admin" value="0">
-	<label for="0">No</label><br>
+	<div class="row">
+		<div class="col-20">
+			<label for="admin">admin page?</label>
+		</div>
+		<div class="col-80">
+			<label for="1">Yes</label>
+			<input type="radio" name="admin" required value="1">
+			<br>
+			<label for="0">No</label>
+			<input type="radio" name="admin" value="0">
+		</div>
+	</div>
 
-	<label for="visible">visible to users?</label><br>
-	<input type="radio" name="visible" required value="1">
-	<label for="1">Yes</label><br>
-	<input type="radio" name="visible" value="0">
-	<label for="0">No</label><br>
-
-	<input class="btn btn-secondary" type="submit" value="create page">
+	<div class="row">
+		<div class="col-20">
+			<label for="visible">visible to users?</label>
+		</div>
+		<div class="col-80">
+			<label for="1">Yes</label>
+			<input type="radio" name="visible" required value="1">
+			<br>
+			<label for="0">No</label>
+			<input type="radio" name="visible" value="0">
+		</div>
+	</div>
+	<input type="submit" value="create page">
 	</form>
 </section>
 
 <?php if (!$pages == NULL) { ?>
 <section>
-	<h3>create paragraph</h3>
+	<h2>create paragraph</h2>
 	<form action="<?= URL ?>admin/createParagraphControl" method='POST'>
-	<label for="page_id">belongs to what page?</label>
-	<select required name="page_id">
-	<?php foreach ($pages as $page) { ?>
-	<option value="<?= $page["ID"] ?>"><?= $page["name"] ?></option>
-	<?php } ?></select><br>
+	<div class="row">
+		<div class="col-20">
+			<label for="page_id">belongs to what page?</label>
+		</div>
+		<div class="col-80">
+		<select required name="page_id">
+			<?php foreach ($pages as $page) { ?>
+			<option value="<?= $page["ID"] ?>"><?= $page["name"] ?></option>
+			<?php } ?></select>
+		</div>
+	</div>
 
-	<label for="title">title</label>
-	<input class="text" type="text" min="2" maxlength="30" size="18" required name="title"><br>
+	<div class="row">
+		<div class="col-20">
+			<label for="title">title</label>
+		</div>
+		<div class="col-80">
+			<input class="text" type="text" min="2" maxlength="80" required name="title"
+			placeholder="of the paragraph">
+		</div>
+	</div>
+
+	<div class="row">
+		<div class="col-20">
+			<label for="context">context</label>
+		</div>
+		<div class="col-80">
+			<textarea min="2" required name="context"
+			placeholder=""></textarea>
+		</div>
+	</div>
 	
-	<label for="context">context</label>
-	<textarea min="2" maxlength="30" size="18" required name="context"></textarea><br>
-	
-	<label for="order_index">order_index</label>
-	<input class="text" type="number" min="1" required name="order_index"><br>
+	<div class="row">
+		<div class="col-20">
+			<label for="order_index">order_index</label>
+		</div>
+		<div class="col-80">
+			<input class="text" type="number" min="1" required name="order_index">
+		</div>
+	</div>
 
-	<label for="visible">visible to users?</label><br>
-	<input type="radio" name="visible" required value="1">
-	<label for="1">Yes</label><br>
-	<input type="radio" name="visible" value="0">
-	<label for="0">No</label><br>
-
-	<input class="btn btn-secondary" type="submit" value="create paragraph">
+	<div class="row">
+		<div class="col-20">
+			<label for="visible">visible to users?</label>
+		</div>
+		<div class="col-80">
+			<label for="1">Yes</label>
+			<input type="radio" name="visible" required value="1"></input>
+			<br>
+			<label for="0">No</label>
+			<input type="radio" name="visible" value="0"></input>
+		</div>
+	</div>
+	<input type="submit" value="create paragraph">
 	</form>
 </section>
 <?php } ?>
