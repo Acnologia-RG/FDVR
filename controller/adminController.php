@@ -16,10 +16,11 @@ function createPageControl()
 	$name = isset($_POST["name"]) ? $_POST["name"] : null;
 	$admin = isset($_POST["admin"]) ? $_POST["admin"] : null;
 	$visible = isset($_POST["visible"]) ? $_POST["visible"] : null;
-	var_dump($name,	$admin,	$visible);
+	// echo "name = ".$name."<br>";
+	// echo "admin = ".$admin."<br>";
+	// echo "visible = ".$visible."<br>";
 
-	// go to the just made page
-	// content($id)
+	content(createNewPage($name, $admin, $visible));
 }
 function createParagraphControl()
 {
@@ -28,4 +29,11 @@ function createParagraphControl()
 	$content = isset($_POST["content"]) ? $_POST["content"] : null;
 	$order_index = isset($_POST["order_index"]) ? $_POST["order_index"] : null;
 	$visible = isset($_POST["visible"]) ? $_POST["visible"] : null;
+	
+	if (createNewParagraph($page_id, $title, $content, $order_index, $visible)) {
+		content($page_id);
+	} else {
+		error_db();
+		exit();
+	}
 }
