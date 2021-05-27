@@ -11,6 +11,24 @@ function showCreatePage()
 		'pages' => $pages)
 	);
 }
+function showEditParagraph($id)
+{
+	$pages = getPages();
+	$paragraph = getParagraph($id);
+	render("edit", array(
+		'paragraph' => $paragraph,
+		'pages' => $pages)
+	);
+}
+function showEditParagraph($id)
+{
+	$pages = getPages();
+	$page = getPage($id);
+	render("edit", array(
+		'page' => $page,
+		'pages' => $pages)
+	);
+}
 function createPageControl()
 {
 	$name = isset($_POST["name"]) ? $_POST["name"] : null;

@@ -1,18 +1,32 @@
 <?php
 function getParagraph($id)
 {
-	// gets all the paragraph data from the database
+	// gets the requested paragraph data from the database
 	$db = openDatabaseConnection();
 	$sql = "SELECT * FROM `paragraphs`
+	WHERE `id` = :id";
+
+	$query = $db->prepare($sql);
+	$query->execute(array(
+		":id" => $id
+	));
+	$paragraph = $query->fetch();
+	
+	return $paragraph;
+	exit();
+}
+function getPage($id)
+{
+	// gets the requested page data from the database
+	$db = openDatabaseConnection();
+	$sql = "SELECT * FROM `pages`
 	WHERE `ID` = :id";
 
 	$query = $db->prepare($sql);
 	$query->execute();
-	$pages = $query->fetch(array(
-		":id" => $id
-	));
+	$pages = $query->fetch();
 	
-	return $paragraphs;
+	return $page;
 	exit();
 }
 function createNewPage($name, $admin, $visible)
