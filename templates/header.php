@@ -13,17 +13,17 @@ session_start();
 	<nav>
 		<ul>
 			<li><a href="<?= URL ?>fdvr/index">home</a></li>
-			<?php foreach ($pages as $page) { ?>
+			<?php foreach ($pages as $page) { 
+				if (isset($_SESSION["power"]) == 1 || $page["visible"] === '1') { ?>
 				<li><a href="<?= URL . "fdvr/content/" . $page["ID"]; ?>"><?= $page["name"] ?></a></li>
 
-			<?php } if ($_SESSION == null) { ?>
-			<li><a href="<?= URL ?>fdvr/registerAndLogin">register/Login</a></li>
-			<?php } else if (!$_SESSION == NULL){ 
-				if ($_SESSION["power"] === '1') { ?>
+			<?php }} if (isset($_SESSION["power"]) == 1) { ?>
 				<li><a href="<?= URL ?>admin/showCreatePage">create</a></li>
+			<?php }?>
 
-				<?php } ?>
-
+			<?php if ($_SESSION == null) { ?>
+			<li><a href="<?= URL ?>fdvr/registerAndLogin">register/Login</a></li>
+			<?php } else { ?>
 			<li><a href="<?= URL ?>fdvr/logout">logout</a></li>
 			<?php } ?>
 		</ul>

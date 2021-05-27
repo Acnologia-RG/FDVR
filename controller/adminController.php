@@ -25,7 +25,7 @@ function createParagraphControl()
 {
 	$page_id = isset($_POST["page_id"]) ? $_POST["page_id"] : null;
 	$title = isset($_POST["title"]) ? $_POST["title"] : null;
-	$context = isset($_POST["context"]) ? $_POST["context"] : null;
+	$content = isset($_POST["content"]) ? $_POST["content"] : null;
 	$order_index = isset($_POST["order_index"]) ? $_POST["order_index"] : null;
 	$visible = isset($_POST["visible"]) ? $_POST["visible"] : null;
 }

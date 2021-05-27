@@ -57,6 +57,7 @@ function logout()
 	header("location:" . URL . "fdvr/index");
 	exit;
 }
+// shows the requested page with all of its content
 function content($id)
 {
 	$pages = getPages();

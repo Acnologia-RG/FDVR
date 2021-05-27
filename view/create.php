@@ -68,10 +68,10 @@
 
 	<div class="row">
 		<div class="col-20">
-			<label for="context">context</label>
+			<label for="content">content</label>
 		</div>
 		<div class="col-80">
-			<textarea min="2" required name="context"
+			<textarea min="2" required name="content"
 			placeholder=""></textarea>
 		</div>
 	</div>

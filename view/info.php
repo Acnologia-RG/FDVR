@@ -91,7 +91,6 @@ Full dive virtual reality development isn’t all fun and games. Success require
 
 <a target="_blank" href="https://www.linkedin.com/pulse/full-dive-virtual-reality-coming-soon-brain-near-you-aviram-eisenberg">source</a>
 </section>
-<br><br>
 
 <section>
 <h2>The full-body tracking and haptics approach</h2>
