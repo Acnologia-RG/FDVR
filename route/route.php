@@ -6,7 +6,7 @@ function route()
 	$url = splitUrl();
 
 	// if there is no controller in $url['controller'] it will go to the default controller and call the index function there
-	if (!$url['controller']) {
+	if (!isset($url['controller'])) {
 		require(ROOT . 'controller/' . DEFAULT_CONTROLLER . 'Controller.php');
 		call_user_func('index');
 
