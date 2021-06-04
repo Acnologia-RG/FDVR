@@ -1,4 +1,5 @@
 <?php
+// gets the requested paragraph
 function getParagraph($id)
 {
 	// gets the requested paragraph data from the database
@@ -15,9 +16,9 @@ function getParagraph($id)
 	return $paragraph;
 	exit();
 }
+// gets the requested page data from the database
 function getPage($id)
 {
-	// gets the requested page data from the database
 	$db = openDatabaseConnection();
 	$sql = "SELECT * FROM `pages`
 	WHERE `ID` = :id";
@@ -29,6 +30,7 @@ function getPage($id)
 	return $page;
 	exit();
 }
+// creates a new page with the given input
 function createNewPage($name, $admin, $visible)
 {
 	// puts the new page data into the database
@@ -44,6 +46,7 @@ function createNewPage($name, $admin, $visible)
 	));
 	$db = null;
 
+	// gets the new page from the database and returns its ID
 	$db = openDatabaseConnection();
 	$sql = "SELECT ID FROM `pages`
 	WHERE `name` = :name LIMIT 1";
@@ -59,6 +62,7 @@ function createNewPage($name, $admin, $visible)
 	return $page["ID"];
 	exit();
 }
+// creates a new paragraph with the given input
 function createNewParagraph($page_id, $title, $content, $order_index, $paragraph_visible)
 {
 	// puts the new paragraph data into the database

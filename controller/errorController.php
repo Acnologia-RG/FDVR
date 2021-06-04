@@ -22,4 +22,3 @@ function error($Err)
 		"Err" => $Err)
 	);
 }
-

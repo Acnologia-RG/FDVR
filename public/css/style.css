@@ -4,6 +4,9 @@ body{
 	font-size: x-large;
 	text-align: center;
 }
+h1{
+	font-size: 3.5rem;
+}
 ul{
 	list-style-type: none;
 	margin: 0;
