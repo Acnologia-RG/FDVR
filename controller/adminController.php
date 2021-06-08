@@ -63,3 +63,36 @@ function createParagraphControl()
 		exit();
 	}
 }
+function editPageControl($id)
+{
+	$name = isset($_POST["name"]) ? $_POST["name"] : null;
+	$admin = isset($_POST["admin"]) ? $_POST["admin"] : null;
+	$visible = isset($_POST["visible"]) ? $_POST["visible"] : null;
+	// echo "name = ".$name."<br>";
+	// echo "admin = ".$admin."<br>";
+	// echo "visible = ".$visible."<br>";
+
+	// makes the new page and sends the user to the newly made page
+	if (updatePage($id, $name, $admin, $visible)) {
+		content($id);
+	} else {
+		error_db();
+		exit();
+	}
+}
+function editParagraphControl($id)
+{
+	$page_id = isset($_POST["page_id"]) ? $_POST["page_id"] : null;
+	$title = isset($_POST["title"]) ? $_POST["title"] : null;
+	$content = isset($_POST["content"]) ? $_POST["content"] : null;
+	$order_index = isset($_POST["order_index"]) ? $_POST["order_index"] : null;
+	$visible = isset($_POST["visible"]) ? $_POST["visible"] : null;
+	
+	// creates the new paragraph and sends the user to the page where its on
+	if (updateParagraph($id, $page_id, $title, $content, $order_index, $visible)) {
+		content($page_id);
+	} else {
+		error_db();
+		exit();
+	}
+}

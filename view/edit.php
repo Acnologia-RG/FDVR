@@ -1,6 +1,7 @@
 <?php if ($editpage == "page") { ?>
 <section>
 <form action="<?= URL ?>admin/editPageControl/<?= $page["ID"] ?>" method='POST'>
+	<h2>edit page</h2>
 	<div class="row">
 		<div class="col-20">
 			<label for="name">name</label>
@@ -44,13 +45,13 @@
 			} ?> type="radio" name="visible" value="0">
 		</div>
 	</div>
-	<input type="submit" value="create page">
+	<input type="submit" value="edit page">
 </form>
 </section>
 
 <?php } elseif ($editpage == "paragraph") { ?>
 <section>
-	<h2>create paragraph</h2>
+	<h2>edit paragraph</h2>
 	<form action="<?= URL ?>admin/editParagraphControl/<?= $paragraph["id"] ?>" method='POST'>
 	<div class="row">
 		<div class="col-20">
@@ -81,7 +82,7 @@
 			<label for="context">context</label>
 		</div>
 		<div class="col-80">
-			<textarea min="2" required name="context"><?= $paragraph["content"]?></textarea>
+			<textarea min="2" required name="content"><?= $paragraph["content"]?></textarea>
 		</div>
 	</div>
 	
@@ -110,7 +111,7 @@
 			} ?> type="radio" name="visible" value="0"></input>
 		</div>
 	</div>
-	<input type="submit" value="create paragraph">
+	<input type="submit" value="edit paragraph">
 	</form>
 </section>
 <?php } ?>

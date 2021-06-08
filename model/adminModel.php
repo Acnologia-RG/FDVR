@@ -85,3 +85,44 @@ function createNewParagraph($page_id, $title, $content, $order_index, $paragraph
 	return TRUE;
 	exit();
 }
+// updates the page with the matching ID with the new data
+function updatePage($id, $name, $admin, $visible)
+{
+	$db = openDatabaseConnection();
+	$sql = "UPDATE pages
+	SET `name`= :name, `admin`= :admin, `visible`= :visible 
+	WHERE `ID` = :id";
+
+	$query = $db->prepare($sql);
+	$query->execute(array(
+		":id" => $id,
+		":name" => $name,
+		":admin" => $admin,
+		":visible" => $visible
+	));
+	$db = null;
+	return TRUE;
+	exit();
+}
+// updates the paragraph with the matching ID with the new data
+function updateParagraph($id, $page_id, $title, $content, $order_index, $paragraph_visible)
+{
+	$db = openDatabaseConnection();
+	$sql = "UPDATE paragraphs
+	SET `page_id`= :page_id, `title`= :title, `content`= :content, `order_index`= :order_index, `paragraph_visible`= :paragraph_visible 
+	WHERE `id` = :id";
+
+	$query = $db->prepare($sql);
+	$query->execute(array(
+		":id" => $id,
+		":page_id" => $page_id,
+		":title" => $title,
+		":content" => $content,
+		":order_index" => $order_index,
+		":paragraph_visible" => $paragraph_visible
+	));
+	$db = null;
+
+	return TRUE;
+	exit();
+}
