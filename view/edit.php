@@ -1,11 +1,13 @@
-<form action="<?= URL ?>admin/createPageControl" method='POST'>
+<?php if ($editpage == "page") { ?>
+<section>
+<form action="<?= URL ?>admin/editPageControl/<?= $page["ID"] ?>" method='POST'>
 	<div class="row">
 		<div class="col-20">
 			<label for="name">name</label>
 		</div>
 		<div class="col-80">
 			<input class="text" type="text" min="2" maxlength="30" required name="name"
-			placeholder="of the page you want to make">
+			value="<?= $page["name"] ?>">
 		</div>
 	</div>
 
@@ -15,10 +17,14 @@
 		</div>
 		<div class="col-80">
 			<label for="1">Yes</label>
-			<input type="radio" name="admin" required value="1">
+			<input <?php if ($page["admin"] == 1) {
+				echo "checked";
+			} ?> type="radio" name="admin" required value="1">
 			<br>
 			<label for="0">No</label>
-			<input type="radio" name="admin" value="0">
+			<input <?php if ($page["admin"] == 0) {
+				echo "checked";
+			} ?> type="radio" name="admin" value="0">
 		</div>
 	</div>
 
@@ -28,18 +34,24 @@
 		</div>
 		<div class="col-80">
 			<label for="1">Yes</label>
-			<input type="radio" name="visible" required value="1">
+			<input <?php if ($page["visible"] == 1) {
+				echo "checked";
+			} ?> type="radio" name="visible" required value="1">
 			<br>
 			<label for="0">No</label>
-			<input type="radio" name="visible" value="0">
+			<input <?php if ($page["visible"] == 0) {
+				echo "checked";
+			} ?> type="radio" name="visible" value="0">
 		</div>
 	</div>
 	<input type="submit" value="create page">
-	</form>
+</form>
+</section>
 
+<?php } elseif ($editpage == "paragraph") { ?>
 <section>
 	<h2>create paragraph</h2>
-	<form action="<?= URL ?>admin/createParagraphControl" method='POST'>
+	<form action="<?= URL ?>admin/editParagraphControl/<?= $paragraph["id"] ?>" method='POST'>
 	<div class="row">
 		<div class="col-20">
 			<label for="page_id">belongs to what page?</label>
@@ -47,7 +59,9 @@
 		<div class="col-80">
 		<select required name="page_id">
 			<?php foreach ($pages as $page) { ?>
-			<option value="<?= $page["ID"] ?>"><?= $page["name"] ?></option>
+			<option <?php if ($paragraph["page_id"] == $page["ID"]) {
+				echo "selected";
+			} ?> value="<?= $page["ID"] ?>"><?= $page["name"] ?></option>
 			<?php } ?></select>
 		</div>
 	</div>
@@ -58,7 +72,7 @@
 		</div>
 		<div class="col-80">
 			<input class="text" type="text" min="2" maxlength="80" required name="title"
-			placeholder="of the paragraph">
+			value="<?= $paragraph["title"] ?>">
 		</div>
 	</div>
 
@@ -67,8 +81,7 @@
 			<label for="context">context</label>
 		</div>
 		<div class="col-80">
-			<textarea min="2" required name="context"
-			placeholder=""></textarea>
+			<textarea min="2" required name="context"><?= $paragraph["content"]?></textarea>
 		</div>
 	</div>
 	
@@ -77,7 +90,7 @@
 			<label for="order_index">order_index</label>
 		</div>
 		<div class="col-80">
-			<input class="text" type="number" min="1" required name="order_index">
+			<input class="text" type="number" min="1" required name="order_index" value="<?= $paragraph["order_index"]?>">
 		</div>
 	</div>
 
@@ -87,12 +100,17 @@
 		</div>
 		<div class="col-80">
 			<label for="1">Yes</label>
-			<input type="radio" name="visible" required value="1"></input>
+			<input <?php if ($paragraph["paragraph_visible"] == 1) {
+				echo "checked";
+			} ?> type="radio" name="visible" required value="1"></input>
 			<br>
 			<label for="0">No</label>
-			<input type="radio" name="visible" value="0"></input>
+			<input <?php if ($paragraph["paragraph_visible"] == 0) {
+				echo "checked";
+			} ?> type="radio" name="visible" value="0"></input>
 		</div>
 	</div>
 	<input type="submit" value="create paragraph">
 	</form>
 </section>
+<?php } ?>

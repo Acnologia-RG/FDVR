@@ -18,6 +18,7 @@ function showEditPage($id)
 	$page = getPage($id);
 	render("edit", array(
 		'page' => $page,
+		'editpage' => "page",
 		'pages' => $pages)
 	);
 }
@@ -28,6 +29,7 @@ function showEditParagraph($id)
 	$paragraph = getParagraph($id);
 	render("edit", array(
 		'paragraph' => $paragraph,
+		'editpage' => "paragraph",
 		'pages' => $pages)
 	);
 }

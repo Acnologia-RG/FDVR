@@ -13,9 +13,9 @@ session_start();
 	<nav>
 		<ul>
 			<li><a href="<?= URL ?>fdvr/index">home</a></li>
-			<?php foreach ($pages as $page) { 
-				if (isset($_SESSION["power"]) == 1 || $page["visible"] === '1') { ?>
-				<li><a href="<?= URL . "fdvr/content/" . $page["ID"]; ?>"><?= $page["name"] ?></a></li>
+			<?php foreach ($pages as $page_nav) { 
+				if (isset($_SESSION["power"]) == 1 || $page_nav["visible"] === '1') { ?>
+				<li><a href="<?= URL . "fdvr/content/" . $page_nav["ID"]; ?>"><?= $page_nav["name"] ?></a></li>
 
 			<?php }} if (isset($_SESSION["power"]) == 1) { ?>
 				<li><a href="<?= URL ?>admin/showCreatePage">create</a></li>

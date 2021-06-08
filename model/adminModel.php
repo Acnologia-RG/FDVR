@@ -24,8 +24,10 @@ function getPage($id)
 	WHERE `ID` = :id";
 
 	$query = $db->prepare($sql);
-	$query->execute();
-	$pages = $query->fetch();
+	$query->execute(array(
+		":id" => $id
+	));
+	$page = $query->fetch();
 	
 	return $page;
 	exit();
