@@ -33,17 +33,16 @@ function getPage($id)
 	exit();
 }
 // creates a new page with the given input
-function createNewPage($name, $admin, $visible)
+function createNewPage($name, $visible)
 {
 	// puts the new page data into the database
 	$db = openDatabaseConnection();
-	$sql = "INSERT INTO `pages`(`name`, `admin`, `visible`)
-	VALUES (:name, :admin, :visible)";
+	$sql = "INSERT INTO `pages`(`name`, `visible`)
+	VALUES (:name, :visible)";
 
 	$query = $db->prepare($sql);
 	$query->execute(array(
 		":name" => $name,
-		":admin" => $admin,
 		":visible" => $visible
 	));
 	$db = null;
@@ -86,18 +85,17 @@ function createNewParagraph($page_id, $title, $content, $order_index, $paragraph
 	exit();
 }
 // updates the page with the matching ID with the new data
-function updatePage($id, $name, $admin, $visible)
+function updatePage($id, $name, $visible)
 {
 	$db = openDatabaseConnection();
 	$sql = "UPDATE pages
-	SET `name`= :name, `admin`= :admin, `visible`= :visible 
+	SET `name`= :name, `visible`= :visible 
 	WHERE `ID` = :id";
 
 	$query = $db->prepare($sql);
 	$query->execute(array(
 		":id" => $id,
 		":name" => $name,
-		":admin" => $admin,
 		":visible" => $visible
 	));
 	$db = null;
@@ -125,4 +123,14 @@ function updateParagraph($id, $page_id, $title, $content, $order_index, $paragra
 
 	return TRUE;
 	exit();
+}
+// deletes the page with the given ID
+function deletePage($id)
+{
+
+}
+// deletes the paragraph with the given id
+function deleteParagraph($id)
+{
+	
 }

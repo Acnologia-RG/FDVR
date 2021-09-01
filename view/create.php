@@ -13,19 +13,6 @@
 
 	<div class="row">
 		<div class="col-20">
-			<label for="admin">admin page?</label>
-		</div>
-		<div class="col-80">
-			<label for="1">Yes</label>
-			<input type="radio" name="admin" required value="1">
-			<br>
-			<label for="0">No</label>
-			<input type="radio" name="admin" value="0">
-		</div>
-	</div>
-
-	<div class="row">
-		<div class="col-20">
 			<label for="visible">visible to users?</label>
 		</div>
 		<div class="col-80">

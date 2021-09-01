@@ -6,3 +6,4 @@ if (!$_SESSION == null) {
 echo "<p>welcome " . $_SESSION["name"] . "</p>";
 }
 ?>
+

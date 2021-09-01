@@ -5,8 +5,10 @@ require(ROOT . "model/fdvrModel.php");
 // shows the user the home page
 function index()
 {
+	$updates = latestUpdates();
 	$pages = getPages();
 	render("home", array(
+		'updates' => $updates,
 		'pages' => $pages));
 }
 // shows the user the registerAndLogin page

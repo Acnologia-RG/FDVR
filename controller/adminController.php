@@ -37,14 +37,12 @@ function showEditParagraph($id)
 function createPageControl()
 {
 	$name = isset($_POST["name"]) ? $_POST["name"] : null;
-	$admin = isset($_POST["admin"]) ? $_POST["admin"] : null;
 	$visible = isset($_POST["visible"]) ? $_POST["visible"] : null;
 	// echo "name = ".$name."<br>";
-	// echo "admin = ".$admin."<br>";
 	// echo "visible = ".$visible."<br>";
 
 	// makes the new page and sends the user to the newly made page
-	content(createNewPage($name, $admin, $visible));
+	content(createNewPage($name, $visible));
 }
 // the small control before its send to the model to create the new paragraph
 function createParagraphControl()
@@ -63,23 +61,23 @@ function createParagraphControl()
 		exit();
 	}
 }
+// the small control before its send to the model to edit the page with the given $id
 function editPageControl($id)
 {
 	$name = isset($_POST["name"]) ? $_POST["name"] : null;
-	$admin = isset($_POST["admin"]) ? $_POST["admin"] : null;
 	$visible = isset($_POST["visible"]) ? $_POST["visible"] : null;
 	// echo "name = ".$name."<br>";
-	// echo "admin = ".$admin."<br>";
 	// echo "visible = ".$visible."<br>";
 
 	// makes the new page and sends the user to the newly made page
-	if (updatePage($id, $name, $admin, $visible)) {
+	if (updatePage($id, $name, $visible)) {
 		content($id);
 	} else {
 		error_db();
 		exit();
 	}
 }
+// the small control before its send to the model to edit the paragraph with the given $id
 function editParagraphControl($id)
 {
 	$page_id = isset($_POST["page_id"]) ? $_POST["page_id"] : null;
@@ -95,4 +93,18 @@ function editParagraphControl($id)
 		error_db();
 		exit();
 	}
+}
+// deletes the page with the given ID before sending it to be deleted
+function deletePageControl($id)
+{
+	$id = isset($_POST["id"]) ? $_POST["id"] : null;
+
+	deletePage($id);
+}
+// checks the paragraph with the given id before sending it to be deleted
+function deleteParagraphControl($id)
+{
+	$id = isset($_POST["id"]) ? $_POST["id"] : null;
+
+	deleteParagraph($id);
 }

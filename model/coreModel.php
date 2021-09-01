@@ -37,9 +37,9 @@ function render($filename, $data = null)
 	require(ROOT . 'view/' . $filename . '.php');
 	require(ROOT . 'templates/footer.php');
 }
+// gets all the page data from the database
 function getPages()
 {
-	// gets all the page data from the database
 	$db = openDatabaseConnection();
 	$sql = "SELECT * FROM `pages`";
 

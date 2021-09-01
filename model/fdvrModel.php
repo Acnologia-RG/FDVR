@@ -2,6 +2,10 @@
 // makes the coreModel.php available from this model
 require(ROOT . "model/coreModel.php");
 
+function latestUpdates()
+{
+	
+}
 function registerModel($name, $password, $confirm_password)
 {
 	// checks if all inputs are filled in
