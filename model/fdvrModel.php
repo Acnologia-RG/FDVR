@@ -4,7 +4,29 @@ require(ROOT . "model/coreModel.php");
 
 function latestUpdates()
 {
+	$db = openDatabaseConnection();
+	$sql = "SELECT * FROM `pages` 
+	WHERE visible = 1 
+	ORDER BY `pages`.`updated_at` DESC 
+	LIMIT 5";
+
+	$query = $db->prepare($sql);
+	$query->execute();
+	$pagesresult = $query->fetchAll();
+
+	$sql = "SELECT * FROM `paragraphs` 
+	WHERE paragraph_visible = 1 
+	ORDER BY `paragraphs`.`updated_at` DESC 
+	LIMIT 5";
 	
+	$query = $db->prepare($sql);
+	$query->execute();
+	$paragraphsresult = $query->fetchAll();
+	$db = null;
+
+	$result = array($pagesresult, $paragraphsresult);
+	return $result;
+	exit();
 }
 function registerModel($name, $password, $confirm_password)
 {
@@ -100,8 +122,8 @@ function getContent($id)
 {
 	$db = openDatabaseConnection();
 	$sql = "SELECT * FROM `pages` 
-	left JOIN `paragraphs` ON `pages`.`ID` = `paragraphs`.`page_id` 
-	WHERE `pages`.`ID` = :id 
+	left JOIN `paragraphs` ON `pages`.`ID` = `paragraphs`.`page_id`
+	WHERE `pages`.`ID` = :id
 	ORDER BY `paragraphs`.`order_index`";
 
 	$query = $db->prepare($sql);

@@ -81,3 +81,14 @@ input[type=submit]:hover{
 	margin: 6px 0px;
 	border-radius: 4px;
 }
+span{
+	font-weight: bold;
+}
+#left {
+	float: left;
+	width: 50%;
+}
+#right {
+	float: right;
+	width: 50%;
+}

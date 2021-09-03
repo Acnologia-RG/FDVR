@@ -46,6 +46,7 @@ function getPages()
 	$query = $db->prepare($sql);
 	$query->execute();
 	$pages = $query->fetchAll();
+	$db = null;
 	
 	return $pages;
 	exit();
