@@ -94,17 +94,33 @@ function editParagraphControl($id)
 		exit();
 	}
 }
-// deletes the page with the given ID before sending it to be deleted
+// checks the page with the given ID before sending it to be deleted
 function deletePageControl($id)
 {
-	$id = isset($_POST["id"]) ? $_POST["id"] : null;
+	$id = isset($id) ? $id : null;
 
-	deletePage($id);
+	session_start();
+	if ($_SESSION["power"] == 1) {
+		if (deletePage($id)) {
+			header("location:" . URL . "fdvr/index");
+		} else {
+			error_db();
+			exit();
+		}
+	}
 }
 // checks the paragraph with the given id before sending it to be deleted
 function deleteParagraphControl($id)
 {
-	$id = isset($_POST["id"]) ? $_POST["id"] : null;
+	$id = isset($id) ? $id : null;
 
-	deleteParagraph($id);
+	session_start();
+	if ($_SESSION["power"] == 1) {
+		if (deleteParagraph($id)) {
+			header("location:" . URL . "fdvr/index");
+		} else {
+			error_db();
+			exit();
+		}
+	}
 }

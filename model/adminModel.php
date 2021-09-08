@@ -127,10 +127,30 @@ function updateParagraph($id, $page_id, $title, $content, $order_index, $paragra
 // deletes the page with the given ID
 function deletePage($id)
 {
+	$db = openDatabaseConnection();
+	$sql = "DELETE FROM `pages` WHERE `ID` = :id";
 
+	$query = $db->prepare($sql);
+	$query->execute(array(
+		":id" => $id
+	));
+	$db = null;
+
+	return TRUE;
+	exit();
 }
 // deletes the paragraph with the given id
 function deleteParagraph($id)
 {
-	
+	$db = openDatabaseConnection();
+	$sql = "DELETE FROM `paragraphs` WHERE `id` = :id";
+
+	$query = $db->prepare($sql);
+	$query->execute(array(
+		":id" => $id
+	));
+	$db = null;
+
+	return TRUE;
+	exit();
 }
