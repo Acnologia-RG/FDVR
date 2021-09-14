@@ -1,5 +1,9 @@
 <?php 
 session_start();
+if (!isset($_SESSION["name"])) {
+	$_SESSION["name"] = null;
+	$_SESSION["power"] = 0;
+} else {}
 ?>
 <!DOCTYPE html>
 <html>
@@ -14,14 +18,17 @@ session_start();
 		<ul>
 			<li><a href="<?= URL ?>fdvr/index">home</a></li>
 			<?php foreach ($pages as $page_nav) { 
-				if (isset($_SESSION["power"]) == 1 || $page_nav["visible"] === '1') { ?>
+				if ($_SESSION["power"] == 1 || $page_nav["visible"] === '1') { ?>
 				<li><a href="<?= URL . "fdvr/content/" . $page_nav["ID"]; ?>"><?= $page_nav["name"] ?></a></li>
 
-			<?php }} if (isset($_SESSION["power"]) == 1) { ?>
+			<?php }} if ($_SESSION["power"] == 1) { ?>
 				<li><a href="<?= URL ?>admin/showCreatePage">create</a></li>
-			<?php }?>
-
-			<?php if ($_SESSION == null) { ?>
+			<?php }
+			if ($_SESSION["name"] == null && $_SESSION["power"] == 0) {
+				session_unset();
+				session_destroy();
+			}
+			if (!isset($_SESSION["name"])) { ?>
 			<li><a href="<?= URL ?>fdvr/registerAndLogin">register/Login</a></li>
 			<?php } else { ?>
 			<li><a href="<?= URL ?>fdvr/logout">logout</a></li>
