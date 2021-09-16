@@ -68,6 +68,43 @@ function createNewParagraph($page_id, $title, $content, $order_index, $paragraph
 {
 	// puts the new paragraph data into the database
 	$db = openDatabaseConnection();
+
+	$sql = "SELECT * FROM `paragraphs`
+	WHERE `page_id` = :page_id AND `order_index` = :order_index";
+
+	$query = $db->prepare($sql);
+	$query->execute(array(
+		":page_id" => $page_id,
+		":order_index" => $order_index
+	));
+
+	$paragraph = $query->fetch();
+	if (!$paragraph == null) {
+		$sql = "SELECT * FROM `paragraphs`
+		WHERE `page_id` = :page_id";
+
+		$query = $db->prepare($sql);
+		$query->execute(array(":page_id" => $page_id));
+		$paragraphs_of_the_page = $query->fetchAll();
+		$number = count($paragraphs_of_the_page);
+		$increment = 1;
+		$new_index_number;
+		//$i = $order_index; $i <= $number; $i++
+		for ($i = $number; $i >= $order_index; $i--) {
+			$new_index_number = $number + $increment;
+			var_dump($new_index_number);
+			$sql = "UPDATE paragraphs
+			SET `order_index`= :order_index
+			WHERE `page_id` = :page_id AND `order_index` = $i";
+
+			$query = $db->prepare($sql);
+			$query->execute(array(
+				":page_id" => $page_id,
+				":order_index" => $new_index_number
+			));
+			$increment--;
+		}
+	}
 	$sql = "INSERT INTO `paragraphs`(`page_id`, `title`, `content`, `order_index`, `paragraph_visible`)
 	VALUES (:page_id, :title, :content, :order_index, :paragraph_visible)";
 
@@ -83,6 +120,7 @@ function createNewParagraph($page_id, $title, $content, $order_index, $paragraph
 
 	return TRUE;
 	exit();
+
 }
 // updates the page with the matching ID with the new data
 function updatePage($id, $name, $visible)

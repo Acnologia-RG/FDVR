@@ -3,7 +3,7 @@ session_start();
 if (!isset($_SESSION["name"])) {
 	$_SESSION["name"] = null;
 	$_SESSION["power"] = 0;
-} else {}
+}
 ?>
 <!DOCTYPE html>
 <html>
