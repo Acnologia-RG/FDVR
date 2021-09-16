@@ -89,10 +89,8 @@ function createNewParagraph($page_id, $title, $content, $order_index, $paragraph
 		$number = count($paragraphs_of_the_page);
 		$increment = 1;
 		$new_index_number;
-		//$i = $order_index; $i <= $number; $i++
 		for ($i = $number; $i >= $order_index; $i--) {
 			$new_index_number = $number + $increment;
-			var_dump($new_index_number);
 			$sql = "UPDATE paragraphs
 			SET `order_index`= :order_index
 			WHERE `page_id` = :page_id AND `order_index` = $i";
