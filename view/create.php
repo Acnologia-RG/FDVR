@@ -1,3 +1,10 @@
+<?php
+if (!isset($_SESSION["name"])) {
+	$_SESSION["name"] = null;
+	$_SESSION["power"] = 0;
+}
+if (!$_SESSION["power"] == NULL) { ?>
+
 <section>
 	<h2>create page</h2>
 	<form action="<?= URL ?>admin/createPageControl" method='POST'>
@@ -87,4 +94,6 @@
 	<input type="submit" value="create paragraph">
 	</form>
 </section>
-<?php } ?>
+<?php }} else {
+	echo "how did you get here?";
+} ?>

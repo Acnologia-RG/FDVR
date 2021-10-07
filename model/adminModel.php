@@ -32,41 +32,9 @@ function getPage($id)
 	return $page;
 	exit();
 }
-// creates a new page with the given input
-function createNewPage($name, $visible)
+
+function orderUpdate($page_id, $order_index)
 {
-	// puts the new page data into the database
-	$db = openDatabaseConnection();
-	$sql = "INSERT INTO `pages`(`name`, `visible`)
-	VALUES (:name, :visible)";
-
-	$query = $db->prepare($sql);
-	$query->execute(array(
-		":name" => $name,
-		":visible" => $visible
-	));
-	$db = null;
-
-	// gets the new page from the database and returns its ID
-	$db = openDatabaseConnection();
-	$sql = "SELECT ID FROM `pages`
-	WHERE `name` = :name LIMIT 1";
-
-	$query = $db->prepare($sql);
-	$query->execute(array(
-		":name" => $name
-	));
-	$db = null;
-
-	$page = $query->fetch();
-
-	return $page["ID"];
-	exit();
-}
-// creates a new paragraph with the given input
-function createNewParagraph($page_id, $title, $content, $order_index, $paragraph_visible)
-{
-	// puts the new paragraph data into the database
 	$db = openDatabaseConnection();
 
 	$sql = "SELECT * FROM `paragraphs`
@@ -103,6 +71,47 @@ function createNewParagraph($page_id, $title, $content, $order_index, $paragraph
 			$increment--;
 		}
 	}
+	$db = null;
+}
+
+// creates a new page with the given input
+function createNewPage($name, $visible)
+{
+	// puts the new page data into the database
+	$db = openDatabaseConnection();
+	$sql = "INSERT INTO `pages`(`name`, `visible`)
+	VALUES (:name, :visible)";
+
+	$query = $db->prepare($sql);
+	$query->execute(array(
+		":name" => $name,
+		":visible" => $visible
+	));
+	$db = null;
+
+	// gets the new page from the database and returns its ID
+	$db = openDatabaseConnection();
+	$sql = "SELECT ID FROM `pages`
+	WHERE `name` = :name LIMIT 1";
+
+	$query = $db->prepare($sql);
+	$query->execute(array(
+		":name" => $name
+	));
+	$db = null;
+
+	$page = $query->fetch();
+
+	return $page["ID"];
+	exit();
+}
+// creates a new paragraph with the given input
+function createNewParagraph($page_id, $title, $content, $order_index, $paragraph_visible)
+{
+	orderUpdate($page_id, $order_index);
+
+	// puts the new paragraph data into the database
+	$db = openDatabaseConnection();
 	$sql = "INSERT INTO `paragraphs`(`page_id`, `title`, `content`, `order_index`, `paragraph_visible`)
 	VALUES (:page_id, :title, :content, :order_index, :paragraph_visible)";
 
@@ -141,6 +150,8 @@ function updatePage($id, $name, $visible)
 // updates the paragraph with the matching ID with the new data
 function updateParagraph($id, $page_id, $title, $content, $order_index, $paragraph_visible)
 {
+	orderUpdate($page_id, $order_index);
+
 	$db = openDatabaseConnection();
 	$sql = "UPDATE paragraphs
 	SET `page_id`= :page_id, `title`= :title, `content`= :content, `order_index`= :order_index, `paragraph_visible`= :paragraph_visible 
