@@ -32,7 +32,7 @@ function getPage($id)
 	return $page;
 	exit();
 }
-
+// updates the orderindex if needed
 function orderUpdate($page_id, $order_index)
 {
 	$db = openDatabaseConnection();
@@ -73,7 +73,6 @@ function orderUpdate($page_id, $order_index)
 	}
 	$db = null;
 }
-
 // creates a new page with the given input
 function createNewPage($name, $visible)
 {
